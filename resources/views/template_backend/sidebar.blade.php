@@ -14,7 +14,13 @@
             <li class="nav-item dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data </span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('datapersonel.index')}}">sumda</a></li>
+                <li><a class="nav-link" href="{{ route('datapersonel.index')}}">Semua Data</a></li>
+                @php
+                  $ruangans = \App\Ruangan::get();    
+                @endphp
+                @foreach($ruangans as $ruangan)
+                  <li><a class="nav-link" href="{{ route('data.personel.ruangan.index', $ruangan->id)}} ">{{ $ruangan->nama }}</a></li>
+                @endforeach
               </ul>
             </li>
           </ul>

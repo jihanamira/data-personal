@@ -28,3 +28,4 @@ Auth::routes();
 Route::get('/search', 'DatapersonelController@search')->name('search');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/datapersonel/ruangan/{id_ruangan}', 'DataPersonelRuanganController@index')->name('data.personel.ruangan.index');
