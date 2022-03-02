@@ -19,6 +19,7 @@ Route::get('/home', function () {
     return view('home');
 });
 Route::resource('/pangkat','PangkatController');
+Route::resource('/ruangan','RuanganController');
 Route::resource('/datapersonel','DatapersonelController');
 Route::get('cetakdatapersonel','DatapersonelController@cetakdatapersonel')->name('cetakdatapersonel');
 Route::get('cetak/{id}','DatapersonelController@cetak')->name('cetak');

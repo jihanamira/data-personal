@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiumTable extends Migration
+class CreateRuanganTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateSiumTable extends Migration
      */
     public function up()
     {
-        Schema::create('sium', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('ruangan', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('nama')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateSiumTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sium');
+        Schema::dropIfExists('nama');
     }
 }

@@ -1,22 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Pangkat;
+
+use App\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-
-class PangkatController extends Controller
+class RuanganController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-    $pangkat = Pangkat::paginate(10);
-        return view('admin.pangkat.index', compact('pangkat'));
+        $ruangan = Ruangan::paginate(10);
+        return view('admin.ruangan.index', compact('ruangan'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PangkatController extends Controller
      */
     public function create()
     {
-     return view('admin.pangkat.create');
+        return view('admin.ruangan.create');
     }
 
     /**
@@ -38,16 +38,16 @@ class PangkatController extends Controller
     public function store(Request $request)
     {
        $this->validate($request, [
-            'pangkat' => 'required|min:3'
+            'nama' => 'required|min:3'
 
         ]);
 
-        $pangkat = Pangkat::create([
-            'pangkat' => $request->pangkat
+        $ruangan = Ruangan::create([
+            'nama' => $request->nama
 
         ]);
 
-        return redirect()->route('pangkat.index')->with('success','pangkat Berhasil Disimpan');
+        return redirect()->route('ruangan.index')->with('success','ruangan Berhasil Disimpan');
     }
 
     /**
@@ -69,8 +69,9 @@ class PangkatController extends Controller
      */
     public function edit($id)
     {
-        $pangkat = Pangkat::findorfail($id);
-        return view('admin.pangkat.edit', compact('pangkat'));       }
+        $ruangan = Ruangan::findorfail($id);
+        return view('admin.ruangan.edit', compact('ruangan'));       
+    }
 
     /**
      * Update the specified resource in storage.
@@ -82,15 +83,16 @@ class PangkatController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'pangkat' => 'required'
+            'nama' => 'required'
         ]);
-         $pangkat = [
-            'pangkat' => $request->pangkat,
+        
+        $ruangan = [
+            'nama' => $request->nama,
         ];
 
-        Pangkat::whereId($id)->update($pangkat);
+        Ruangan::whereId($id)->update($ruangan);
 
-        return redirect()->route('pangkat.index')->with('success','Data Berhasil di Update');
+        return redirect()->route('ruangan.index')->with('success','Data Berhasil di Update');
     }
 
     /**
@@ -101,8 +103,8 @@ class PangkatController extends Controller
      */
     public function destroy($id)
     {
-        $pangkat = Pangkat::findorfail($id);
-        $pangkat->delete();
+        $ruangan = Ruangan::findorfail($id);
+        $ruangan->delete();
 
         return redirect()->back()->with('success','Data Berhasil Dihapus');
     }

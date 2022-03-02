@@ -16,12 +16,14 @@ class CreateDatapersonelTable extends Migration
         Schema::create('datapersonel', function (Blueprint $table) {
            $table->Increments('id');
             $table->integer('id_pangkat')->unsigned()->nullable();
+            $table->integer('id_ruangan')->unsigned()->nullable();
             $table->string('nama')->nullable();
             $table->string('nrp')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('umum')->nullable();
             $table->string('polri')->nullable();
             $table->foreign('id_pangkat')->references('id')->on('pangkat')->onDelete('cascade');
+            $table->foreign('id_ruangan')->references('id')->on('ruangan')->onDelete('cascade');
             $table->timestamps();
         });
     }
