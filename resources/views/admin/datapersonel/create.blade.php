@@ -34,6 +34,16 @@
 </div>
 
 <div class="form-group">
+    <label>Ruangan</label>
+    <select class="form-control" name="id_ruangan">
+    	<option value="" holder>Pilih Ruangan</option>
+    	@foreach($ruangan as $data)
+    	<option value="{{ $data->id }}">{{ $data->nama }}</option>
+    	@endforeach
+    </select>
+</div>
+
+<div class="form-group">
     <label>NRP </label>
     <input type="text" class="form-control" name="nrp">
 </div>
@@ -71,7 +81,7 @@
 </div>
 <div class="form-group">
     <label>SK PENGANGKATAN</label>
-    <input type="text" class="form-control" name="skpengankatan">
+    <input type="text" class="form-control" name="skpengangktan">
 </div>
 
  <div class="form-group">

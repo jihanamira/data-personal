@@ -22,6 +22,9 @@ class CreateDatapersonelTable extends Migration
             $table->string('jabatan')->nullable();
             $table->string('umum')->nullable();
             $table->string('polri')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('skpengangktan')->nullable();
             $table->foreign('id_pangkat')->references('id')->on('pangkat')->onDelete('cascade');
             $table->foreign('id_ruangan')->references('id')->on('ruangan')->onDelete('cascade');
             $table->timestamps();

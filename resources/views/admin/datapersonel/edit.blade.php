@@ -23,7 +23,7 @@
 
 <div class="form-group">
     <label>NAMA </label>
-    <input type="text" class="form-control" name="nama">
+    <input type="text" class="form-control" name="nama" value={{ $datapersonel->nama }}>
 </div>
 <div class="form-group">
     <label>pangkat</label>
@@ -35,13 +35,24 @@
     </select>
 </div>
 
+
+<div class="form-group">
+    <label>Ruangan</label>
+    <select class="form-control" name="id_ruangan">
+    	<option value="" holder>Pilih Ruangan</option>
+    	@foreach($ruangan as $data)
+    	<option value="{{ $data->id }}">{{ $data->nama }}</option>
+    	@endforeach
+    </select>
+</div>
+
 <div class="form-group">
     <label>NRP </label>
-    <input type="text" class="form-control" name="nrp">
+    <input type="text" class="form-control" name="nrp" value={{ $datapersonel->nrp }}>
 </div>
 <div class="form-group">
     <label>JABATAN </label>
-    <input type="text" class="form-control" name="jabatan">
+    <input type="text" class="form-control" name="jabatan" value={{ $datapersonel->jabatan }}>
 </div>
 <div class="form-group">
     <label>UMUM </label>
@@ -62,19 +73,19 @@
 </div>
 <div class="form-group">
     <label>POLRI </label>
-    <input type="text" class="form-control" name="polri">
+    <input type="text" class="form-control" name="polri" value={{ $datapersonel->polri }}>
 </div>
 <div class="form-group">
     <label>ALAMAT</label>
-    <input type="text" class="form-control" name="alamat">
+    <input type="text" class="form-control" name="alamat" value={{ $datapersonel->alamat }}>
 </div>
 <div class="form-group">
     <label>AGAMA</label>
-    <input type="text" class="form-control" name="agama">
+    <input type="text" class="form-control" name="agama" value={{ $datapersonel->agama }}>
 </div>
 <div class="form-group">
     <label>SK PENGANGKATAN</label>
-    <input type="text" class="form-control" name="skpengangkatan">
+    <input type="text" class="form-control" name="skpengangktan" value={{ $datapersonel->skpengangktan }}>
 </div>
  <div class="form-group">
     <button class="btn btn-primary btn-block">Simpan Data personel</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Datapersonel;
 use App\Pangkat;
+use App\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,7 @@ class DatapersonelController extends Controller
     public function index()
     {
         $pangkat = Pangkat::all();
+        
         // dd($pangkat);
         $datapersonel = Datapersonel::with('pangkat')->paginate(100);
         return view('admin.datapersonel.index', compact('datapersonel','pangkat'));
@@ -83,7 +85,8 @@ class DatapersonelController extends Controller
     {
         $pangkat = Pangkat::all(); 
         $datapersonel = Datapersonel::all();
-        return view('admin.datapersonel.create', compact('datapersonel','pangkat'));
+        $ruangan = Ruangan::all();
+        return view('admin.datapersonel.create', compact('datapersonel','pangkat','ruangan'));
     }
 
     /**
@@ -102,6 +105,7 @@ class DatapersonelController extends Controller
      
         $datapersonel = Datapersonel::create([
             'id_pangkat' => $request->id_pangkat,
+            'id_ruangan' => $request->id_ruangan,
             'nama' => $request->nama,
             'nrp' => $request->nrp,        
             'jabatan' => $request->jabatan,
@@ -109,15 +113,13 @@ class DatapersonelController extends Controller
             'polri' => $request->polri,
             'alamat' => $request->alamat,
             'agama' => $request->agama,
-            'skpengangkatan' => $request->skpangkat,
-            
-
+            'skpengangktan' => $request->skpengangktan,
         ]);
 
        
         //$datakematian->tags()->attach($request->tags);
  
-        return redirect()->back()->with('success','Postingan anda berhasil disimpan');
+        return redirect()->route('datapersonel.index')->with('success','Postingan anda berhasil disimpan');
     }
 
     /**
@@ -141,7 +143,8 @@ class DatapersonelController extends Controller
     {
         $pangkat = Pangkat::all();
         $datapersonel = Datapersonel::findorfail($id);
-        return view('admin.datapersonel.edit', compact('datapersonel', 'pangkat')); 
+        $ruangan = Ruangan::all();
+        return view('admin.datapersonel.edit', compact('datapersonel', 'pangkat','ruangan')); 
     }
 
     /**
@@ -154,7 +157,7 @@ class DatapersonelController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required|unique:datapersonel|max:100',
+            'nama' => 'required|max:100',
         ]);
 
         
@@ -162,6 +165,7 @@ class DatapersonelController extends Controller
 
         $datapersonel_data = [
            'id_pangkat' => $request->id_pangkat,
+           'id_ruangan' => $request->id_ruangan,
             'nama' => $request->nama,
             'nrp' => $request->nrp,        
             'jabatan' => $request->jabatan,
@@ -169,7 +173,7 @@ class DatapersonelController extends Controller
             'polri' => $request->polri,
             'alamat' => $request->alamat,
             'agama' => $request->agama,
-            'skpengangkatan' => $request->skpangkat,
+            'skpengangktan' => $request->skpengangktan,
             ];       
 
 

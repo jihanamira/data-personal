@@ -61,6 +61,7 @@
 			<th rowspan="2" style="vertical-align: middle;">No</th>
 			<th rowspan="2" style="vertical-align: middle;">NAMA</th>
 			<th rowspan="2" style="vertical-align: middle;">PANGKAT</th>
+			<th rowspan="2" style="vertical-align: middle;">RUANGAN</th>
 			<th rowspan="2" style="vertical-align: middle;">NRP</th>
 			<th rowspan="2" style="vertical-align: middle;">JABATAN</th>
 			<th colspan="2" style="vertical-align: middle;">PENDIDIKAN</th>
@@ -80,13 +81,14 @@
 				<td>{{ $result + $datapersonel->firstitem() }} </td>
 				<td>{{ $hasil->nama}}</td>
 				<td>{{ optional($hasil->pangkat)->pangkat }}</td>
+				<td>{{ optional($hasil->ruangan)->nama }}</td>
 				<td>{{ $hasil->nrp}}</td>
 				<td>{{ $hasil->jabatan }}</td>
 				<td>{{ $hasil->umum }}</td>
 				<td>{{ $hasil->polri }}</td>
 				<td>{{ $hasil->alamat }}</td>
 				<td>{{ $hasil->agama }}</td>
-				<td>{{ $hasil->skpengangkatan }}</td>
+				<td>{{ $hasil->skpengangktan }}</td>
 				<td>
 					<form action="{{ route('datapersonel.destroy', $hasil->id) }}" method="POST"> 
 						@csrf
